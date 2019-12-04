@@ -37,6 +37,7 @@ export default {
 
 h1 {
   text-align: center;
+  font-weight: 300;
   font-size: 3em;
   word-spacing: 0.3em;
   letter-spacing: 0.1em;
