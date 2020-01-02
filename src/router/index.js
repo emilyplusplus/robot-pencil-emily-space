@@ -8,8 +8,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Launches',
       component: Launches
+    },
+    {
+      path: '/api/*'
+      //Ignore it and send to backend server
     }
-  ]
+  ],
+  mode: 'history'
 })

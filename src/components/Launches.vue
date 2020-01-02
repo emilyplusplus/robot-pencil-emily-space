@@ -5,7 +5,13 @@
     <input type="button" value="Refresh" />
     </div>
     <div v-for="launch in launches" class="launches-row">
-      {{launch.name}}
+      <div><img height="64" src='../assets/placeholder.png' /></div>
+      <div>{{launch.rocket.rocket_name}}</div>
+      <div>{{launch.rocket.rocket_type}}</div>
+      <div>{{launch.launch_date_unix}}</div>
+      <div>{{launch.details}}</div>
+      <div>{{launch.flight_number}}</div>
+      <div><a :href=launch.links.article_link ><img height='16' src='../assets/link.svg' /></a></div>
     </div>
   </div>
 </template>
@@ -13,12 +19,22 @@
 <script>
 export default {
   name: 'Launches',
+  async created() {
+    fetch('http://localhost:5000/api/all').then(raw => {
+      return raw.json()
+    }).then(data => {
+      //console.log(data)
+      this.launches = data
+    })
+  },
   data () {
     return {
-      launches: [{'name': 'test1'},{'name': 'test2'}]
+      launches: []
     }
   }
 }
+
+
 </script>
 
 <style scoped>
@@ -41,6 +57,7 @@ h1 {
   font-size: 3em;
   word-spacing: 0.3em;
   letter-spacing: 0.1em;
+  color: #fff;
 }
 
 #launches-header {
@@ -48,6 +65,17 @@ h1 {
 }
 
 .launches-row {
-  margin-bottom: 20px;
+  padding: 0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: #ffffffcc;
+  height: 68px;
+  line-height: 68px;
+  display: flex;
+  flex-direction: row;
+}
+
+.launches-row div {
+  flex: 0.14;
 }
 </style>

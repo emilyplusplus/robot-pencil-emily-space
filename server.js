@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var cors = require('cors')
 var serveStatic = require('serve-static');
 var loki = require('lokijs')
 
@@ -11,6 +12,8 @@ var launches = db.addCollection('launches');
 launches.insert(seedData)
 
 app = express();
+
+app.use(cors())
 
 app.get('/api/all', (req, res) => {
     res.json(launches.find())
