@@ -20,7 +20,7 @@
 export default {
   name: 'Launches',
   async created() {
-    fetch('http://localhost:5000/api/all').then(raw => {
+    fetch('/api/all').then(raw => {
       return raw.json()
     }).then(data => {
       //console.log(data)
