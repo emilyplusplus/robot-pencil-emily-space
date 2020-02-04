@@ -144,6 +144,11 @@ h1 {
   border-radius: 99px;
   width: 36px;
   height:36px;
+  transition: all 0.2s ease;
+}
+
+#actions a:hover {
+  transform: rotate(60deg);
 }
 
 #filters {
