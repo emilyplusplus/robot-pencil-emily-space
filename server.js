@@ -20,32 +20,40 @@ app.get('/api/all', (req, res) => {
 })
 
 app.get('/api/filtered', (req, res) => {
-    let queryObj = {}
+    let queryObj = {'$and': []}
 
-    if(req.query.landSuccess == 'true') { queryObj['launch_success'] = true }
+    if(req.query.landSuccess == 'true') {
+      queryObj['$and'].push({
+        ['launch_success'] : true
+      });
+    }
     if(req.query.reUsed == 'true') {
-        queryObj['$or'] = [{ 
-            'reuse.core': true
-          },{
-            'reuse.side_core1': true
-          },{
-            'reuse.side_core2': true
-          },{
-            'reuse.fairings': true
-          },{
-            'reuse.capsule': true
-          }]
+      queryObj['$and'].push({
+        ['$or'] : [{ 
+          'reuse.core': true
+        },{
+          'reuse.side_core1': true
+        },{
+          'reuse.side_core2': true
+        },{
+          'reuse.fairings': true
+        },{
+          'reuse.capsule': true
+        }]
+      });
     }
     if(req.query.withReddit == 'true') {
-        queryObj['$or'] = [{ 
-            'links.reddit_launch': { $ne: null }
-          },{
-            'links.reddit_campaign': { $ne: null }
-          },{
-            'links.reddit_recovery': { $ne: null }
-          },{
-            'links.reddit_media': { $ne: null }
-          }]
+      queryObj['$and'].push({
+        ['$or'] : [{ 
+          'links.reddit_launch': { $ne: null }
+        },{
+          'links.reddit_campaign': { $ne: null }
+        },{
+          'links.reddit_recovery': { $ne: null }
+        },{
+          'links.reddit_media': { $ne: null }
+        }]
+      });
     }
 
     //console.log(queryObj)
