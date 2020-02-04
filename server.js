@@ -20,8 +20,21 @@ app.get('/api/all', (req, res) => {
     //res.sendStatus(200)
 })
 
-app.get('/api/some', (req, res) => {
-    res.json( launches.find({ launch_success : true }) )
+app.get('/api/filtered', (req, res) => {
+    //console.log(req.query)
+    let queryObj = {}
+
+    if(req.query.landSuccess == 'true') { queryObj['launch_success'] = true }
+    if(req.query.reUsed == 'true') { 
+        //queryObj['reuse']['core'] = true
+    }
+    if(req.query.withReddit == 'true') { 
+        //queryObj['links']['reddit_launch'] = true
+    }
+
+    console.log(queryObj)
+
+    res.json( launches.find(queryObj) )
     //res.sendStatus(200)
 })
 

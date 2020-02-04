@@ -62,9 +62,9 @@ export default {
       // check to see if we're runnning on Heroku or local dev machine
       let devPrefix = (process.env.prod === 'true') ? '' : 'http://localhost:5000'
 
-      console.log('refreshed: ' + this.landSuccess + ',' + this.reUsed + ',' + this.withReddit)
+      // console.log('refreshed: ' + this.landSuccess + ',' + this.reUsed + ',' + this.withReddit)
 
-      fetch(devPrefix + '/api/some').then(raw => {
+      fetch(devPrefix + '/api/filtered?landSuccess=' + this.landSuccess + '&reUsed=' + this.reUsed + '&withReddit=' + this.withReddit).then(raw => {
         return raw.json()
       }).then(data => {
         // console.log(data)
