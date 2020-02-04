@@ -9,7 +9,7 @@
       <div>{{launch.rocket.rocket_name}}</div>
       <div>{{launch.rocket.rocket_type}}</div>
       <div>{{new Date(launch.launch_date_unix*1000).getMonth()+1 + '/' + new Date(launch.launch_date_unix*1000).getDate() + '/' + new Date(launch.launch_date_unix*1000).getFullYear()}}</div>
-      <div class='details'>{{launch.details}}</div>
+      <div :title=launch.details class='details'>{{launch.details}}</div>
       <div>{{launch.flight_number}}</div>
       <div><a target="_blank" :href=launch.links.article_link ><img height='16' src='../assets/link.svg' /></a></div>
     </div>
