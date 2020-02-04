@@ -4,7 +4,7 @@
     <div id="launches-header">
     <input type="button" value="Refresh" />
     </div>
-    <div v-for="launch in launches" class="launches-row">
+    <div v-bind:key="launch.flight_number" v-for="launch in launches" class="launches-row">
       <div><img height="64" src='../assets/placeholder.png' /></div>
       <div>{{launch.rocket.rocket_name}}</div>
       <div>{{launch.rocket.rocket_type}}</div>
@@ -19,11 +19,14 @@
 <script>
 export default {
   name: 'Launches',
-  async created() {
-    fetch('/api/all').then(raw => {
+  async created () {
+    // check to see if we're runnning on Heroku or local dev machine
+    let devPrefix = (process.env.prod === 'true') ? '' : 'http://localhost:5000'
+
+    fetch(devPrefix + '/api/all').then(raw => {
       return raw.json()
     }).then(data => {
-      //console.log(data)
+      // console.log(data)
       this.launches = data
     })
   },
@@ -33,7 +36,6 @@ export default {
     }
   }
 }
-
 
 </script>
 

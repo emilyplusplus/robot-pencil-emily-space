@@ -12,7 +12,7 @@ export default new Router({
     },
     {
       path: '/api/*'
-      //Ignore it and send to backend server
+      // Ignore it and send to backend server
     }
   ],
   mode: 'history'
