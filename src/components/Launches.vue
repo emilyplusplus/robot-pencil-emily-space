@@ -9,9 +9,9 @@
       <div>{{launch.rocket.rocket_name}}</div>
       <div>{{launch.rocket.rocket_type}}</div>
       <div>{{launch.launch_date_unix}}</div>
-      <div>{{launch.details}}</div>
+      <div class='details'>{{launch.details}}</div>
       <div>{{launch.flight_number}}</div>
-      <div><a :href=launch.links.article_link ><img height='16' src='../assets/link.svg' /></a></div>
+      <div><a target="_blank" :href=launch.links.article_link ><img height='16' src='../assets/link.svg' /></a></div>
     </div>
   </div>
 </template>
@@ -78,6 +78,14 @@ h1 {
 }
 
 .launches-row div {
-  flex: 0.14;
+  flex: 0.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.launches-row div.details {
+  flex: 0.4;
+  padding: 0 40px;
 }
 </style>
