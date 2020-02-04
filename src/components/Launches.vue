@@ -5,10 +5,10 @@
     <input type="button" value="Refresh" />
     </div>
     <div v-bind:key="launch.flight_number" v-for="launch in launches" class="launches-row">
-      <div><img height="64" src='../assets/placeholder.png' /></div>
+      <div class="patch"><img height="32" :src="(launch.links.mission_patch_small != null) ? launch.links.mission_patch_small : '../assets/placeholder.png'" /></div>
       <div>{{launch.rocket.rocket_name}}</div>
       <div>{{launch.rocket.rocket_type}}</div>
-      <div>{{launch.launch_date_unix}}</div>
+      <div>{{new Date(launch.launch_date_unix*1000).getMonth()+1 + '/' + new Date(launch.launch_date_unix*1000).getDate() + '/' + new Date(launch.launch_date_unix*1000).getFullYear()}}</div>
       <div class='details'>{{launch.details}}</div>
       <div>{{launch.flight_number}}</div>
       <div><a target="_blank" :href=launch.links.article_link ><img height='16' src='../assets/link.svg' /></a></div>
@@ -82,6 +82,11 @@ h1 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.launches-row div.patch img {
+  display: block;
+  margin: 15px auto 0 auto;
 }
 
 .launches-row div.details {
