@@ -92,23 +92,23 @@ label {
   margin-right: 10px; /* margin between inputs types */
 }
 
-.checkbox {  
-  display: none;  
+.checkbox {
+  display: none;
 }
 
 label:before {
   content: "";
   width: 15px;
   height: 15px;
-  position: absolute;  
+  position: absolute;
   left: 0;
   border: 2px solid #ddd;
   margin-top: 2px;
 }
 
-.checkbox:checked + label:before {  
-  background: url('../assets/checkmark.svg') left center no-repeat;  
-} 
+.checkbox:checked + label:before {
+  background: url('../assets/checkmark.svg') left center no-repeat;
+}
 
 #launches-table {
   min-width: 700px;
