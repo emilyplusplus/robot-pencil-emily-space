@@ -7,10 +7,10 @@
         <div id="filters">
         <input v-model="landSuccess" type="checkbox" />
         <label>Land Success</label>
-        <input v-model="reUsed" type="checkbox" />
-        <label>Re-used</label>
-        <input v-model="withReddit" type="checkbox" />
-        <label>With Reddit</label>
+        <input id="success" class="checkbox" v-model="landSuccess" type="checkbox" />
+        <label for="success">Land Success</label>
+        <input id="recycle" class="checkbox" v-model="reUsed" type="checkbox" />
+        <label for="reddit">With Reddit</label>
         </div>
       </div>
       <div id="colNames">
@@ -84,6 +84,32 @@ export default {
   font-family: 'Geomanist Regular', sans-serif;
 }
 
+label {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  padding-left: 25px; /* 10 px padding right + 15px input type*/
+  margin-right: 10px; /* margin between inputs types */
+}
+
+.checkbox {  
+  display: none;  
+}
+
+label:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  position: absolute;  
+  left: 0;
+  border: 2px solid #ddd;
+  margin-top: 2px;
+}
+
+.checkbox:checked + label:before {  
+  background: url('../assets/checkmark.svg') left center no-repeat;  
+} 
+
 #launches-table {
   min-width: 700px;
 }
@@ -113,16 +139,18 @@ h1 {
 #actions a {
   display: block;
   float: left;
-  margin: 15px 0 0 20px;
+  margin: 20px 0 0 20px;
   border: 2px solid #fff;
   border-radius: 99px;
-  width: 48px;
-  height:48px;
+  width: 36px;
+  height:36px;
 }
 
 #filters {
   float: right;
-  margin: 20px 20px 0 0;
+  margin: 30px 20px 0 0;
+  font-size: 1.1em;
+  text-transform: uppercase;
 }
 
 #colNames {
