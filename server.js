@@ -17,25 +17,16 @@ app.use(cors())
 
 app.get('/api/all', (req, res) => {
     res.json(launches.find())
-    //res.sendStatus(200)
 })
 
 app.get('/api/filtered', (req, res) => {
-    //console.log(req.query)
     let queryObj = {}
 
     if(req.query.landSuccess == 'true') { queryObj['launch_success'] = true }
-    if(req.query.reUsed == 'true') { 
-        //queryObj['reuse']['core'] = true
-    }
-    if(req.query.withReddit == 'true') { 
-        //queryObj['links']['reddit_launch'] = true
-    }
-
-    console.log(queryObj)
+    if(req.query.reUsed == 'true') { queryObj['reuse.core'] = true }
+    if(req.query.withReddit == 'true') { queryObj['links.reddit_launch'] = { $ne: null } }
 
     res.json( launches.find(queryObj) )
-    //res.sendStatus(200)
 })
 
 app.use(serveStatic(__dirname + "/dist"));

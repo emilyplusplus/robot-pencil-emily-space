@@ -40,7 +40,7 @@ export default {
   name: 'Launches',
   async created () {
     // check to see if we're runnning on Heroku or local dev machine
-    let devPrefix = (process.env.prod === 'true') ? '' : 'http://localhost:5000'
+    let devPrefix = ''
 
     fetch(devPrefix + '/api/all').then(raw => {
       return raw.json()
@@ -60,14 +60,12 @@ export default {
   methods: {
     refresh: function () {
       // check to see if we're runnning on Heroku or local dev machine
-      let devPrefix = (process.env.prod === 'true') ? '' : 'http://localhost:5000'
-
-      // console.log('refreshed: ' + this.landSuccess + ',' + this.reUsed + ',' + this.withReddit)
+      let devPrefix = ''
 
       fetch(devPrefix + '/api/filtered?landSuccess=' + this.landSuccess + '&reUsed=' + this.reUsed + '&withReddit=' + this.withReddit).then(raw => {
         return raw.json()
       }).then(data => {
-        // console.log(data)
+        console.log('refreshed')
         this.launches = data
       })
     }
