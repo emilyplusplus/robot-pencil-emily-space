@@ -85,7 +85,7 @@ export default {
 }
 
 #launches-table {
-  overflow: hidden;
+  min-width: 700px;
 }
 
 h1 {

@@ -24,6 +24,5 @@ html,body {
   width: 80%;
   max-width: 1200px;
   margin: auto;
-  overflow: hidden;
 }
 </style>
