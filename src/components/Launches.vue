@@ -3,7 +3,7 @@
     <h1>SpaceX Launches</h1>
     <div id="launches-header">
       <div id="actions">
-        <a href="#"><img src="../assets/refresh.svg" /></a>
+        <a v-on:click.stop="refresh" href="#"><img src="../assets/refresh.svg" /></a>
         <div id="filters">
         <input type="checkbox" />
         <label>Land Success</label>
@@ -52,6 +52,11 @@ export default {
   data () {
     return {
       launches: []
+    }
+  },
+  methods: {
+    refresh: function () {
+      console.log('refreshed')
     }
   }
 }
