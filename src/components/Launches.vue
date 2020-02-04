@@ -5,11 +5,11 @@
       <div id="actions">
         <a v-on:click.stop="refresh" href="#"><img src="../assets/refresh.svg" /></a>
         <div id="filters">
-        <input type="checkbox" />
+        <input v-model="landSuccess" type="checkbox" />
         <label>Land Success</label>
-        <input type="checkbox" />
+        <input v-model="reUsed" type="checkbox" />
         <label>Re-used</label>
-        <input type="checkbox" />
+        <input v-model="withReddit" type="checkbox" />
         <label>With Reddit</label>
         </div>
       </div>
@@ -18,7 +18,7 @@
         <div><span>Rocket Name</span></div>
         <div><span>Rocket Type</span></div>
         <div><span>Launch Date</span></div>
-        <div class="details"><span>Details</span></div>
+        <div class="details"><span>Details; More info on hover...</span></div>
         <div><span>ID</span></div>
         <div><span>Article</span></div>
       </div>
@@ -51,12 +51,15 @@ export default {
   },
   data () {
     return {
-      launches: []
+      launches: [],
+      landSuccess: false,
+      reUsed: false,
+      withReddit: false
     }
   },
   methods: {
     refresh: function () {
-      console.log('refreshed')
+      console.log('refreshed: ' + this.landSuccess + ',' + this.reUsed + ',' + this.withReddit)
     }
   }
 }
