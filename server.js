@@ -20,6 +20,11 @@ app.get('/api/all', (req, res) => {
     //res.sendStatus(200)
 })
 
+app.get('/api/some', (req, res) => {
+    res.json( launches.find({ launch_success : true }) )
+    //res.sendStatus(200)
+})
+
 app.use(serveStatic(__dirname + "/dist"));
 
 var port = process.env.PORT || 5000;
