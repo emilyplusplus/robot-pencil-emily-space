@@ -102,7 +102,6 @@ h1 {
   border-radius: 99px;
   width: 48px;
   height:48px;
-  
 }
 
 #filters {
