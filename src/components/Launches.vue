@@ -2,7 +2,26 @@
   <div id="launches-table">
     <h1>SpaceX Launches</h1>
     <div id="launches-header">
-    <input type="button" value="Refresh" />
+      <div id="actions">
+        <a href="#"><img src="../assets/refresh.svg" /></a>
+        <div id="filters">
+        <input type="checkbox" />
+        <label>Land Success</label>
+        <input type="checkbox" />
+        <label>Re-used</label>
+        <input type="checkbox" />
+        <label>With Reddit</label>
+        </div>
+      </div>
+      <div id="colNames">
+        <div class="badgeHeader"><span>Badge</span></div>
+        <div><span>Rocket Name</span></div>
+        <div><span>Rocket Type</span></div>
+        <div><span>Launch Date</span></div>
+        <div class="details"><span>Details</span></div>
+        <div><span>ID</span></div>
+        <div><span>Article</span></div>
+      </div>
     </div>
     <div v-bind:key="launch.flight_number" v-for="launch in launches" class="launches-row">
       <div class="patch"><img height="32" :src="(launch.links.mission_patch_small != null) ? launch.links.mission_patch_small : '../assets/placeholder.png'" /></div>
@@ -64,6 +83,58 @@ h1 {
 
 #launches-header {
   margin-bottom: 20px;
+  background: #ffffff33;
+  border: #ddd solid 1px;
+  border-radius: 5px;
+  height: 160px;
+  position: relative;
+}
+
+#actions {
+  color: #fff;
+}
+
+#actions a {
+  display: block;
+  float: left;
+  margin: 15px 0 0 20px;
+  border: 2px solid #fff;
+  border-radius: 99px;
+  width: 48px;
+  height:48px;
+  
+}
+
+#filters {
+  float: right;
+  margin: 20px 20px 0 0;
+}
+
+#colNames {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #ffffffdd;
+  display: flex;
+  flex-direction: row;
+  padding: 20px 0;
+}
+
+#colNames div {
+  flex: 0.1;
+}
+
+#colNames div span {
+  font-weight: bold;
+}
+
+#colNames div.details {
+  flex: 0.4;
+  padding: 0 40px;
+}
+
+.badgeHeader {
+  text-align: center;
 }
 
 .launches-row {
