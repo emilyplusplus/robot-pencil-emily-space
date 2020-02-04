@@ -5,7 +5,6 @@
       <div id="actions">
         <a v-on:click.stop="refresh" href="#"><img src="../assets/refresh.svg" /></a>
         <div id="filters">
-        <label>Land Success</label>
         <input id="success" class="checkbox" v-model="landSuccess" type="checkbox" />
         <label for="success">Land Success</label>
         <input id="recycle" class="checkbox" v-model="reUsed" type="checkbox" />
