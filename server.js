@@ -48,7 +48,7 @@ app.get('/api/filtered', (req, res) => {
           }]
     }
 
-    console.log(queryObj)
+    //console.log(queryObj)
 
     res.json( launches.find(queryObj) )
 })
